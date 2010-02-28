@@ -1,0 +1,26 @@
+" Dependencies:
+"
+"     user-textobjects by Kana Natsuno
+"     http://www.vim.org/scripts/script.php?script_id=2100
+"
+"     matchit by Benju Fisher
+"     http://www.vim.org/scripts/script.php?script_id=39
+"
+"
+" Overview:
+"     This plugin adds some textobjects to the html.django_template filetype
+"
+"     idb/adb - in/around a django {% block %}
+"     idf/adf - in around a django {% for %} loop
+"     idi/adi - in/around a django {% if* } tag
+"     idw/adw - in around a django {% with %} tag 
+"
+"    so Use as you would other text objects in visual selection, cutting and
+"    dealleting etc.
+"
+" Installation:
+"
+"   Please ensure you have the above plugins installed as instructed
+"   This file should be in your after/ftplugin for django_template
+"
+"   ~/.vim/after/ftplugin/django_template/template_textobjects.vim
