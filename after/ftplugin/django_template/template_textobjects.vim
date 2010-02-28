@@ -22,7 +22,7 @@
 "
 " Dependencies:
 "
-"     user-textobjects by Kana Natsuno
+"     textobj-user by Kana Natsuno
 "     http://www.vim.org/scripts/script.php?script_id=2100
 "
 "     matchit by Benju Fisher
@@ -76,7 +76,7 @@ if !exists('*g:textobj_function_django_template')
         let initpos = getpos(".")
         call search('{% *'.a:type.' .*%}','b')
         let e =getpos('.')
-        normal %f}
+        normal g%f}
         let b = getpos('.')
         return ['v',b,e]
     endfun
@@ -87,7 +87,7 @@ if !exists('*g:textobj_function_django_template')
         normal f}<space>
         let e =getpos('.')
         call search('{','b')
-        normal %h
+        normal g%h
         let b = getpos('.')
         return ['v',b,e]
     endfun
