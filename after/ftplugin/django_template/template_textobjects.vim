@@ -74,7 +74,7 @@ if !exists('*g:textobj_function_django_template')
 
     fun s:select_a(type)
         let initpos = getpos(".")
-        if  ( search('{% *'.a:type.' .*%}','b') == 0)
+        if  ( searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b') == 0)
             return 0
         endif
         let e =getpos('.')
@@ -85,7 +85,7 @@ if !exists('*g:textobj_function_django_template')
 
     fun s:select_i(type)
         let initpos = getpos(".")
-        if ( search('{% *'.a:type . " .*%}", 'b') == 0 )
+        if  (searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b') == 0)
             return 0
         endif
         normal f}
