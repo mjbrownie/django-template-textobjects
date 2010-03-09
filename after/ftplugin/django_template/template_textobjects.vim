@@ -25,10 +25,6 @@
 "     textobj-user by Kana Natsuno
 "     http://www.vim.org/scripts/script.php?script_id=2100
 "
-"     matchit by Benju Fisher
-"     http://www.vim.org/scripts/script.php?script_id=39
-"
-"
 " Overview:
 "     This plugin adds some textobjects to the html.django_template filetype
 "
@@ -74,12 +70,21 @@ if !exists('*g:textobj_function_django_template')
 
     fun s:select_a(type)
         let initpos = getpos(".")
-        if  ( searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b') == 0)
+
+        let e =searchpairpos('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b')
+        if  ( e == [0,0])
             return 0
         endif
-        let e =getpos('.')
-        normal g%f}
-        let b = getpos('.')
+
+        let e = [bufnr(".")] + e + [0]
+
+        call setpos(".",initpos)
+
+        call searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','')
+
+        norm f}
+        let b =  getpos(".")
+
         return ['v',b,e]
     endfun
 
@@ -88,12 +93,18 @@ if !exists('*g:textobj_function_django_template')
         if  (searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b') == 0)
             return 0
         endif
+
         normal f}
         "move one pesky char
         call search('.')
         let e =getpos('.')
-        call search('{','b')
-        normal g%
+
+        call setpos(".",initpos)
+
+        call searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','')
+"        call search(".", 'b')
+        let b = getpos(".")
+
         "move one pesky char
         call search('.','b')
         let b = getpos('.')
