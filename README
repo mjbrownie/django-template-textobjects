@@ -3,9 +3,6 @@
 "     textobj-user by Kana Natsuno
 "     http://www.vim.org/scripts/script.php?script_id=2100
 "
-"     matchit by Benju Fisher
-"     http://www.vim.org/scripts/script.php?script_id=39
-"
 "
 " Overview:
 "     This plugin adds some textobjects to the html.django_template filetype
