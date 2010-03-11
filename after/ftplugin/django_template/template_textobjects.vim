@@ -76,7 +76,7 @@ if !exists('*g:textobj_function_django_template')
             return 0
         endif
 
-        let e = [bufnr(".")] + e + [0]
+        let e = [bufnr("%")] + e + [0]
 
         call setpos(".",initpos)
 
