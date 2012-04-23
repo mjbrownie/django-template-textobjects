@@ -156,6 +156,30 @@ if !exists('*g:textobj_function_django_template')
        return s:select_i('for')
     endfun
 
+
+    fun s:select_autoescape_a()
+       return s:select_a('autoescape')
+    endfun
+
+    fun s:select_autoescape_i()
+       return s:select_i('autoescape')
+    endfun
+
+    fun s:select_filter_a()
+       return s:select_a('filter')
+    endfun
+
+    fun s:select_filter_i()
+       return s:select_i('filter')
+    endfun
+
+    fun s:select_spaceless_a()
+       return s:select_a('spaceless')
+    endfun
+
+    fun s:select_spaceless_i()
+       return s:select_i('spaceless')
+    endfun
 endif
 
 call textobj#user#plugin('djangotemplate',{
@@ -184,4 +208,21 @@ call textobj#user#plugin('djangotemplate',{
 \       'select-a':'adf','*select-a-function*':'s:select_for_a',
 \       'select-i':'idf', '*select-i-function*':'s:select_for_i'
 \   },
+\   'autoescape':{
+\       '*sfile*': expand('<sfile>:p'),
+\       'select-a':'ada','*select-a-function*':'s:select_autoescape_a',
+\       'select-i':'ida', '*select-i-function*':'s:select_autoescape_i'
+\   },
+\   'spaceless':{
+\       '*sfile*': expand('<sfile>:p'),
+\       'select-a':'ads','*select-a-function*':'s:select_spaceless_a',
+\       'select-i':'ids', '*select-i-function*':'s:select_spaceless_i'
+\   },
+\   'filter':{
+\       '*sfile*': expand('<sfile>:p'),
+\       'select-a':'ads','*select-a-function*':'s:select_filter_a',
+\       'select-i':'ids', '*select-i-function*':'s:select_filter_i'
+\   },
 \})
+
+runtime! after/ftplugin/html/html_textobjects.vim
