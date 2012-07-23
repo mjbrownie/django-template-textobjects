@@ -31,7 +31,7 @@
 "     idb/adb - in/around a django {% block %}
 "     idf/adf - in around a django {% for %} loop
 "     idi/adi - in/around a django {% if* } tag
-"     idw/adw - in around a django {% with %} tag 
+"     idw/adw - in around a django {% with %} tag
 "
 "    so Use as you would other text objects in visual selection, cutting and
 "    dealleting etc.
@@ -51,17 +51,18 @@ if exists("loaded_matchit")
     let b:match_words = '<:>,' .
     \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
     \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
-    \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>,'  . 
-    \ '{% *if .*%}:{% *else *%}:{% *endif *%},' . 
-    \ '{% *ifequal .*%}:{% *else *%}:{% *endifequal *%},' . 
-    \ '{% *ifnotequal .*%}:{% *else *%}:{% *endifnotequal *%},' . 
-    \ '{% *ifchanged .*%}:{% *else *%}:{% *endifchanged *%},' . 
-    \ '{% *for .*%}:{% *endfor *%},' . 
+    \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>,'  .
+    \ '{% *if .*%}:{% *else *%}:{% *endif *%},' .
+    \ '{% *ifequal .*%}:{% *else *%}:{% *endifequal *%},' .
+    \ '{% *ifnotequal .*%}:{% *else *%}:{% *endifnotequal *%},' .
+    \ '{% *ifchanged .*%}:{% *else *%}:{% *endifchanged *%},' .
+    \ '{% *for .*%}:{% *endfor *%},' .
     \ '{% *with .*%}:{% *endwith *%},' .
     \ '{% *comment .*%}:{% *endcomment *%},' .
     \ '{% *block .*%}:{% *endblock *%},' .
     \ '{% *filter .*%}:{% *endfilter *%},' .
-    \ '{% *spaceless .*%}:{% *endspaceless *%}' 
+    \ '{% *spaceless .*%}:{% *endspaceless *%},' .
+    \ '{% *cache .*%}:{% *endcache *%}'
 else
     finish
 endif
@@ -180,6 +181,15 @@ if !exists('*g:textobj_function_django_template')
     fun s:select_spaceless_i()
        return s:select_i('spaceless')
     endfun
+
+    fun s:select_cache_a()
+       return s:select_a('cache')
+    endfun
+
+    fun s:select_cache_i()
+       return s:select_i('cache')
+    endfun
+
 endif
 
 call textobj#user#plugin('djangotemplate',{
@@ -222,6 +232,11 @@ call textobj#user#plugin('djangotemplate',{
 \       '*sfile*': expand('<sfile>:p'),
 \       'select-a':'ads','*select-a-function*':'s:select_filter_a',
 \       'select-i':'ids', '*select-i-function*':'s:select_filter_i'
+\   },
+\   'cache':{
+\       '*sfile*': expand('<sfile>:p'),
+\       'select-a':'adC','*select-a-function*':'s:select_cache_a',
+\       'select-i':'idC', '*select-i-function*':'s:select_cache_i'
 \   },
 \})
 
