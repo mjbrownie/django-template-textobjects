@@ -17,7 +17,15 @@
 "
 " Installation:
 "
+"   Pathogen/Vundle (recommended):
+"
+"   git clone git://github.com/mjbrownie/django-template-textobjects.git ~/.vim/bundle/django_template_textobjects
+"
+"   Manual:
+"
 "   Please ensure you have the above plugins installed as instructed
 "   This file should be in your after/ftplugin for htmldjango
 "
 "   ~/.vim/after/ftplugin/htmldjango/template_textobjects.vim
+"
+"
