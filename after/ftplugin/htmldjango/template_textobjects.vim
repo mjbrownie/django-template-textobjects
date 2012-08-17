@@ -45,6 +45,8 @@
 "
 " }}
 
+"TODO This if block is vestigial from when matchit.vim was required. It still
+"performs a useful setup but should probably be in the syntax file.
 if exists("loaded_matchit")
     let b:match_ignorecase = 1
     let b:match_skip = 's:Comment'
@@ -63,8 +65,6 @@ if exists("loaded_matchit")
     \ '{% *filter .*%}:{% *endfilter *%},' .
     \ '{% *spaceless .*%}:{% *endspaceless *%},' .
     \ '{% *cache .*%}:{% *endcache *%}'
-else
-    finish
 endif
 
 if !exists('*g:textobj_function_django_template')
