@@ -26,7 +26,7 @@
 "     http://www.vim.org/scripts/script.php?script_id=2100
 "
 " Overview:
-"     This plugin adds some textobjects to the html.django_template filetype
+"     This plugin adds some textobjects to the htmldjango filetype
 "
 "     idb/adb - in/around a django {% block %}
 "     idf/adf - in around a django {% for %} loop
@@ -39,9 +39,9 @@
 " Installation:
 "
 "   Please ensure you have the above plugins installed as instructed
-"   This file should be in your after/ftplugin for django_template
+"   This file should be in your after/ftplugin for htmldjango
 "
-"   ~/.vim/after/ftplugin/django_template/template_textobjects.vim
+"   ~/.vim/after/ftplugin/htmldjango/template_textobjects.vim
 "
 " }}
 
