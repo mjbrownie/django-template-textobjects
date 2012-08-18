@@ -10,7 +10,10 @@
 "     idb/adb - in/around a django {% block %}
 "     idf/adf - in around a django {% for %} loop
 "     idi/adi - in/around a django {% if* } tag
-"     idw/adw - in around a django {% with %} tag 
+"     idw/adw - in around a django {% with %} tag
+"     idc/adc - in around a django {% comment %} tag
+"     idC/adC - in around a django {% cache %} tag
+"     ids/ads - in around a django {% spaceless %} tag
 "
 "    so Use as you would other text objects in visual selection, cutting and
 "    dealleting etc.
