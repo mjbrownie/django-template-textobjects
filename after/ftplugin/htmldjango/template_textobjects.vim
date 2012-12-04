@@ -62,7 +62,8 @@ if exists("loaded_matchit")
     \ '{% *block .*%}:{% *endblock *%},' .
     \ '{% *filter .*%}:{% *endfilter *%},' .
     \ '{% *spaceless .*%}:{% *endspaceless *%},' .
-    \ '{% *cache .*%}:{% *endcache *%}'
+    \ '{% *cache .*%}:{% *endcache *%}' .
+    \ '{% *blocktrans .*%}:{% *endblocktrans *%}'
 else
     finish
 endif
@@ -190,6 +191,13 @@ if !exists('*g:textobj_function_django_template')
        return s:select_i('cache')
     endfun
 
+    fun s:select_blocktrans_a()
+       return s:select_a('blocktrans')
+    endfun
+
+    fun s:select_blocktrans_i()
+       return s:select_i('blocktrans')
+    endfun
 endif
 
 call textobj#user#plugin('djangotemplate',{
@@ -237,6 +245,11 @@ call textobj#user#plugin('djangotemplate',{
 \       '*sfile*': expand('<sfile>:p'),
 \       'select-a':'adC','*select-a-function*':'s:select_cache_a',
 \       'select-i':'idC', '*select-i-function*':'s:select_cache_i'
+\   },
+\   'blocktrans':{
+\       '*sfile*': expand('<sfile>:p'),
+\       'select-a':'adt','*select-a-function*':'s:select_blocktrans_a',
+\       'select-i':'idt', '*select-i-function*':'s:select_blocktrans_i'
 \   },
 \})
 
