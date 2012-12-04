@@ -26,7 +26,7 @@
 "     http://www.vim.org/scripts/script.php?script_id=2100
 "
 " Overview:
-"     This plugin adds some textobjects to the html.django_template filetype
+"     This plugin adds some textobjects to the htmldjango filetype
 "
 "     idb/adb - in/around a django {% block %}
 "     idf/adf - in around a django {% for %} loop
@@ -39,12 +39,14 @@
 " Installation:
 "
 "   Please ensure you have the above plugins installed as instructed
-"   This file should be in your after/ftplugin for django_template
+"   This file should be in your after/ftplugin for htmldjango
 "
-"   ~/.vim/after/ftplugin/django_template/template_textobjects.vim
+"   ~/.vim/after/ftplugin/htmldjango/template_textobjects.vim
 "
 " }}
 
+"TODO This if block is vestigial from when matchit.vim was required. It still
+"performs a useful setup but should probably be in the syntax file.
 if exists("loaded_matchit")
     let b:match_ignorecase = 1
     let b:match_skip = 's:Comment'
@@ -64,8 +66,6 @@ if exists("loaded_matchit")
     \ '{% *spaceless .*%}:{% *endspaceless *%},' .
     \ '{% *cache .*%}:{% *endcache *%}' .
     \ '{% *blocktrans .*%}:{% *endblocktrans *%}'
-else
-    finish
 endif
 
 if !exists('*g:textobj_function_django_template')

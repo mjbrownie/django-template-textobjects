@@ -5,19 +5,30 @@
 "
 "
 " Overview:
-"     This plugin adds some textobjects to the html.django_template filetype
+"     This plugin adds some textobjects to the htmldjango filetype
 "
 "     idb/adb - in/around a django {% block %}
 "     idf/adf - in around a django {% for %} loop
 "     idi/adi - in/around a django {% if* } tag
-"     idw/adw - in around a django {% with %} tag 
+"     idw/adw - in around a django {% with %} tag
+"     idc/adc - in around a django {% comment %} tag
+"     idC/adC - in around a django {% cache %} tag
+"     ids/ads - in around a django {% spaceless %} tag
 "
 "    so Use as you would other text objects in visual selection, cutting and
 "    dealleting etc.
 "
 " Installation:
 "
-"   Please ensure you have the above plugins installed as instructed
-"   This file should be in your after/ftplugin for django_template
+"   Pathogen/Vundle (recommended):
 "
-"   ~/.vim/after/ftplugin/django_template/template_textobjects.vim
+"   git clone git://github.com/mjbrownie/django-template-textobjects.git ~/.vim/bundle/django_template_textobjects
+"
+"   Manual:
+"
+"   Please ensure you have the above plugins installed as instructed
+"   This file should be in your after/ftplugin for htmldjango
+"
+"   ~/.vim/after/ftplugin/htmldjango/template_textobjects.vim
+"
+"
