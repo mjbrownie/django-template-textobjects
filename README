@@ -19,7 +19,7 @@
 "     also for variables and non block tags
 "
 "     idv/adv - in around a variable {{ variable }}
-"     idt/adt - in aroung a (closed) tag {% tag_name %}
+"     idt/adt - in around a (closed) tag {% tag_name %}
 "
 "    so Use as you would other text objects in visual selection, cutting and
 "    dealleting etc.
