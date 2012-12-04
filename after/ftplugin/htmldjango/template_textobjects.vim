@@ -198,6 +198,54 @@ if !exists('*g:textobj_function_django_template')
     fun s:select_blocktrans_i()
        return s:select_i('blocktrans')
     endfun
+
+    fun s:select_variable_i()
+        let initpos = getpos(".")
+        if  (searchpair('{{.','','}}','b') == 0)
+            return 0
+        endif
+
+        call search('..')
+        let e = getpos('.')
+        call search('.}}')
+        let b = getpos('.')
+        return ['v',b,e]
+    endfun
+
+    fun s:select_variable_a()
+        let initpos = getpos(".")
+        if  (searchpair('{{','','}}','b') == 0)
+            return 0
+        endif
+        let b = getpos('.')
+        call search('}}','e')
+        let e = getpos('.')
+        return ['v',b,e]
+    endfun
+
+    fun s:select_tag_i()
+        let initpos = getpos(".")
+        if  (searchpair('{%.','','%}','b') == 0)
+            return 0
+        endif
+
+        call search('..')
+        let e = getpos('.')
+        call search('.%}')
+        let b = getpos('.')
+        return ['v',b,e]
+    endfun
+
+    fun s:select_tag_a()
+        let initpos = getpos(".")
+        if  (searchpair('{%','','%}','b') == 0)
+            return 0
+        endif
+        let b = getpos('.')
+        call search('%}','e')
+        let e = getpos('.')
+        return ['v',b,e]
+    endfun
 endif
 
 call textobj#user#plugin('djangotemplate',{
@@ -248,8 +296,18 @@ call textobj#user#plugin('djangotemplate',{
 \   },
 \   'blocktrans':{
 \       '*sfile*': expand('<sfile>:p'),
-\       'select-a':'adt','*select-a-function*':'s:select_blocktrans_a',
-\       'select-i':'idt', '*select-i-function*':'s:select_blocktrans_i'
+\       'select-a':'adT','*select-a-function*':'s:select_blocktrans_a',
+\       'select-i':'idT', '*select-i-function*':'s:select_blocktrans_i'
+\   },
+\   'variable':{
+\       '*sfile*': expand('<sfile>:p'),
+\       'select-a':'adv','*select-a-function*':'s:select_variable_a',
+\       'select-i':'idv', '*select-i-function*':'s:select_variable_i'
+\   },
+\   'tag':{
+\       '*sfile*': expand('<sfile>:p'),
+\       'select-a':'adt','*select-a-function*':'s:select_tag_a',
+\       'select-i':'idt', '*select-i-function*':'s:select_tag_i'
 \   },
 \})
 

@@ -14,6 +14,12 @@
 "     idc/adc - in around a django {% comment %} tag
 "     idC/adC - in around a django {% cache %} tag
 "     ids/ads - in around a django {% spaceless %} tag
+"     idT/adT - in around a django {% blocktrans %} tag
+"
+"     also for variables and non block tags
+"
+"     idv/adv - in around a variable {{ variable }}
+"     idt/adt - in aroung a tag {% tag_name %}
 "
 "    so Use as you would other text objects in visual selection, cutting and
 "    dealleting etc.
