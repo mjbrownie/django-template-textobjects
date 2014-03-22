@@ -54,7 +54,7 @@ if exists("loaded_matchit")
     \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
     \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
     \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>,'  .
-    \ '{% *if .*%}:{% *else *%}:{% *endif *%},' .
+    \ '{% *if .*%}:{% *else *%}:{% *elif .*%}:{% *endif *%},' .
     \ '{% *ifequal .*%}:{% *else *%}:{% *endifequal *%},' .
     \ '{% *ifnotequal .*%}:{% *else *%}:{% *endifnotequal *%},' .
     \ '{% *ifchanged .*%}:{% *else *%}:{% *endifchanged *%},' .
