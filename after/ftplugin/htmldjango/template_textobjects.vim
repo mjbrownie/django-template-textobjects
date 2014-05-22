@@ -68,7 +68,7 @@ if exists("loaded_matchit")
     \ '{% *blocktrans .*%}:{% *endblocktrans *%}'
 endif
 
-if !exists('*g:textobj_function_django_template')
+if !exists('*s:select_a')
 
     fun s:select_a(type)
         let initpos = getpos(".")
@@ -111,10 +111,6 @@ if !exists('*g:textobj_function_django_template')
         call search('.','b')
         let b = getpos('.')
         return ['v',b,e]
-    endfun
-
-    fun! g:textobj_function_django_template(block_type,object_type)
-        return s:select_{a:block_type}_{a:object_type}()
     endfun
 
     fun s:select_block_a()
