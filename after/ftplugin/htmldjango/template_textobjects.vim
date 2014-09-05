@@ -54,18 +54,18 @@ if exists("loaded_matchit")
     \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
     \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
     \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>,'  .
-    \ '{% *if .*%}:{% *else *%}:{% *elif .*%}:{% *endif *%},' .
-    \ '{% *ifequal .*%}:{% *else *%}:{% *endifequal *%},' .
-    \ '{% *ifnotequal .*%}:{% *else *%}:{% *endifnotequal *%},' .
-    \ '{% *ifchanged .*%}:{% *else *%}:{% *endifchanged *%},' .
-    \ '{% *for .*%}:{% *endfor *%},' .
-    \ '{% *with .*%}:{% *endwith *%},' .
-    \ '{% *comment .*%}:{% *endcomment *%},' .
-    \ '{% *block .*%}:{% *endblock *%},' .
-    \ '{% *filter .*%}:{% *endfilter *%},' .
-    \ '{% *spaceless .*%}:{% *endspaceless *%},' .
-    \ '{% *cache .*%}:{% *endcache *%}' .
-    \ '{% *blocktrans .*%}:{% *endblocktrans *%}'
+    \ '{% *if\>.\{-}%}:{% *else\>.\{-}%}:{% *elif\>.\{-}%}:{% *endif\>.\{-}%},' .
+    \ '{% *ifequal\>.\{-}%}:{% *else\>.\{-}%}:{% *endifequal\>.\{-}%},' .
+    \ '{% *ifnotequal\>.\{-}%}:{% *else\>.\{-}%}:{% *endifnotequal\>.\{-}%},' .
+    \ '{% *ifchanged\>.\{-}%}:{% *else\>.\{-}%}:{% *endifchanged\>.\{-}%},' .
+    \ '{% *for\>.\{-}%}:{% *endfor\>.\{-}%},' .
+    \ '{% *with\>.\{-}%}:{% *endwith\>.\{-}%},' .
+    \ '{% *comment\>.\{-}%}:{% *endcomment\>.\{-}%},' .
+    \ '{% *block\>.\{-}%}:{% *endblock\>.\{-}%},' .
+    \ '{% *filter\>.\{-}%}:{% *endfilter\>.\{-}%},' .
+    \ '{% *spaceless\>.\{-}%}:{% *endspaceless\>.\{-}%},' .
+    \ '{% *cache\>.\{-}%}:{% *endcache\>.\{-}%},' .
+    \ '{% *blocktrans\>.\{-}%}:{% *endblocktrans\>.\{-}%}'
 endif
 
 if !exists('*s:select_a')
@@ -73,8 +73,8 @@ if !exists('*s:select_a')
     fun s:select_a(type)
         let initpos = getpos(".")
 
-        let e =searchpairpos('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b')
-        if  ( e == [0,0])
+        let e = searchpairpos('{% *'.a:type.'\>.\{-}%}','','{% *end'.a:type. '\>.\{-}%}','b')
+        if e == [0,0]
             return 0
         endif
 
@@ -82,9 +82,9 @@ if !exists('*s:select_a')
 
         call setpos(".",initpos)
 
-        call searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','')
+        call searchpair('{% *'.a:type.'\>.\{-}%}','','{% *end'.a:type. '\>.\{-}%}','')
 
-        norm f}
+        normal! f}
         let b =  getpos(".")
 
         return ['v',b,e]
@@ -92,18 +92,18 @@ if !exists('*s:select_a')
 
     fun s:select_i(type)
         let initpos = getpos(".")
-        if  (searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','b') == 0)
+        if  (searchpair('{% *'.a:type.'\>.\{-}%}','','{% *end'.a:type. '\>.\{-}%}','b') == 0)
             return 0
         endif
 
-        normal f}
+        normal! f}
         "move one pesky char
         call search('.')
         let e =getpos('.')
 
         call setpos(".",initpos)
 
-        call searchpair('{% *'.a:type.' .*%}','','{% *end'.a:type. ' *%}','')
+        call searchpair('{% *'.a:type.'\>.\{-}%}','','{% *end'.a:type. '\>.\{-}%}','')
 "        call search(".", 'b')
         let b = getpos(".")
 
