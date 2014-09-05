@@ -53,19 +53,20 @@ if exists("loaded_matchit")
     let b:match_words = '<:>,' .
     \ '<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,' .
     \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
-    \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>,'  .
+    \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>,' .
+    \ '{% *block\>.\{-}%}:{% *endblock\>.\{-}%},' .
+    \ '{% *blocktrans\>.\{-}%}:{% *endblocktrans\>.\{-}%},' .
+    \ '{% *cache\>.\{-}%}:{% *endcache\>.\{-}%},' .
+    \ '{% *comment\>.\{-}%}:{% *endcomment\>.\{-}%},' .
+    \ '{% *filter\>.\{-}%}:{% *endfilter\>.\{-}%},' .
+    \ '{% *for\>.\{-}%}:{% *empty\>.\{-}%}:{% *endfor\>.\{-}%},' .
     \ '{% *if\>.\{-}%}:{% *else\>.\{-}%}:{% *elif\>.\{-}%}:{% *endif\>.\{-}%},' .
+    \ '{% *ifchanged\>.\{-}%}:{% *else\>.\{-}%}:{% *endifchanged\>.\{-}%},' .
     \ '{% *ifequal\>.\{-}%}:{% *else\>.\{-}%}:{% *endifequal\>.\{-}%},' .
     \ '{% *ifnotequal\>.\{-}%}:{% *else\>.\{-}%}:{% *endifnotequal\>.\{-}%},' .
-    \ '{% *ifchanged\>.\{-}%}:{% *else\>.\{-}%}:{% *endifchanged\>.\{-}%},' .
-    \ '{% *for\>.\{-}%}:{% *endfor\>.\{-}%},' .
-    \ '{% *with\>.\{-}%}:{% *endwith\>.\{-}%},' .
-    \ '{% *comment\>.\{-}%}:{% *endcomment\>.\{-}%},' .
-    \ '{% *block\>.\{-}%}:{% *endblock\>.\{-}%},' .
-    \ '{% *filter\>.\{-}%}:{% *endfilter\>.\{-}%},' .
     \ '{% *spaceless\>.\{-}%}:{% *endspaceless\>.\{-}%},' .
-    \ '{% *cache\>.\{-}%}:{% *endcache\>.\{-}%},' .
-    \ '{% *blocktrans\>.\{-}%}:{% *endblocktrans\>.\{-}%}'
+    \ '{% *verbatim\>.\{-}%}:{% *endverbatim\>.\{-}%},' .
+    \ '{% *with\>.\{-}%}:{% *endwith\>.\{-}%}'
 endif
 
 if !exists('*s:select_a')
